@@ -1,0 +1,20 @@
+{
+  "name": "untitled1",
+  "authors": [
+    "Javier <parringuer@gmail.com>"
+  ],
+  "description": "framework prueba",
+  "main": "miFramework",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
+}
