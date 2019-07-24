@@ -1,14 +1,15 @@
 <?php
-    require __DIR__ . '/../../vendor/autoload.php';
 
-    $containerBuilder = new DI\ContainerBuilder;
+require __DIR__ . '/../../vendor/autoload.php';
 
-    // $containerBuilder->useAutowiring(false);
-    // $containerBuilder->useAutowiring(true);
+$containerBuilder = new DI\ContainerBuilder;
 
-    Kint::dump($containerBuilder);
+// $containerBuilder->useAutowiring(false);
+// $containerBuilder->useAutowiring(true);
 
-    //$containerBuilder->addDefinitions(__DIR__.'/../bootstrap/config.php');
+Kint::dump($containerBuilder);
 
-    $container = $containerBuilder->build();
-    return $container;
+$containerBuilder->addDefinitions(__DIR__.'/../bootstrap/config.php');
+
+$container = $containerBuilder->build();
+return $container;

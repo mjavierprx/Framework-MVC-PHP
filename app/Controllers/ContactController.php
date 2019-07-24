@@ -1,4 +1,5 @@
 <?php
+
 namespace Application\Controllers; class ContactController {
     public function contact(){
         echo('

@@ -1,7 +1,10 @@
 <?php
 namespace Application\Controllers;
+
+use Application\Providers\Doctrine;
+
 class HomeController {
-    public function index() {
+    public function index(Doctrine $doctrine) {
         echo ('
             <link rel="stylesheet" href="./components/bootstrap/dist/css/bootstrap.css">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
