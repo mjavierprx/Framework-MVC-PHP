@@ -1,4 +1,5 @@
 <?php
+
 namespace Application\Providers;
 
 use Psr\Container\ContainerInterface;
