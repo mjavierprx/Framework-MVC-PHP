@@ -2,9 +2,16 @@
 namespace Application\Controllers;
 
 use Application\Providers\Doctrine;
+use Application\Models\Entities\User;
 
 class HomeController {
-    public function index(Doctrine $doctrine) {
+    protected $doctrine;
+
+    public function __construct(Doctrine $doctrine) {
+        $this->doctrine = $doctrine;
+    }
+
+    public function index() {
         echo ('
             <link rel="stylesheet" href="./components/bootstrap/dist/css/bootstrap.css">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,5 +32,10 @@ class HomeController {
             </nav>
         ');
         echo ('<h1>Bienvenido</h1>');
+        \Kint::dump($this->doctrine);
+
+        //Mostrar datos de un usuario de la base de datos:
+        $user = $this->doctrine->em->getRepository(User::class)->find(2);
+        \Kint::dump($user);
     }
 }
