@@ -2,23 +2,30 @@
 
 namespace Application\Providers;
 
+use Twig;
+use Kint;
+
 class View {
-    protected $twig;
+    private $twig;
 
-    public function __construct() {
-        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../../resources/views');
-        $twig = new \Twig_Environment($loader);
-
-        $twigFunctions = new \Twig_SimpleFunction(\TwigFunctions::class,
-            function ($method, $params = []) {
-                return \TwigFunctions::$method($params);
-            }
-        );
-        $twig->addFunction($twigFunctions);
-        $this->twig = $twig;
+    public function __construct () {
+        $loader= new \Twig\Loader\FilesystemLoader(dirname(__DIR__)."\\resources\\views");
+        $this->twig = new \Twig\Environment($loader);
     }
 
-    public function render(string $view, array $data = []): string {
-        return $this->twig->render($view, $data);
+    public function render (string $view, array $data = []) {
+        if($data !=null){
+            extract ($data, EXTR_SKIP);
+        }
+        $file = dirname(__DIR__)."\\resources\\views\\".$view;
+        if(is_readable($file)){
+            require $file;
+        } else {
+            throw new \InvalidArgumentException();
+        }
+    }
+
+    public function renderTemplate($template, $args=[]) {
+        echo $this->twig->render($template, $args);
     }
 }

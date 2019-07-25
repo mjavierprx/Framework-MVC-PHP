@@ -28,12 +28,15 @@ class ContactController {
                         <li class="nav-item">
                             <a class="nav-link" href="/contacto">Contacto</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/usuarios">Usuarios</a>
+                        </li>                        
                     </ul>
                 </div>
             </nav>
         ');
         echo('<h1>Contacto</h1>');
-        \Kint::dump($this->doctrine);
+        // \Kint::dump($this->doctrine);
 
         //Mostrar datos de un usuario de la base de datos:
         $user = $this->doctrine->em->getRepository(User::class)->find(4);
@@ -41,7 +44,7 @@ class ContactController {
         $fecha = $user->created_at;
         $fechaString = $fecha->format('Y-m-d H:i:s');
 
-        \Kint::dump($user);
+        // \Kint::dump($user);
         echo ('<h3>'.$user->name.'</h3>');
         echo ('<h5>'.$user->email.'</h5>');
         echo ('<p>Fecha creación: '.$fechaString.'</p>');

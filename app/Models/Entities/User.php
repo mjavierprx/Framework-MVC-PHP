@@ -27,7 +27,7 @@ class User extends Entity {
      *     minMessage="Mínimo 2 caracteres"
      * )
      */
-    protected $name;
+    public $name;
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(
@@ -38,7 +38,7 @@ class User extends Entity {
      * )
      *
      */
-    protected $email;
+    public $email;
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(

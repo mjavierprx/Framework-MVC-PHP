@@ -14,18 +14,17 @@ class HomeController {
     }
 
     public function index(View $view) {
-        echo $view->render('home.twig');
+        echo $view->renderTemplate('home.twig');
 
-        echo ('<h1>Bienvenido</h1>');
-        \Kint::dump($this->doctrine);
+        // \Kint::dump($this->doctrine);
 
         //Mostrar datos de un usuario de la base de datos:
         $user = $this->doctrine->em->getRepository(User::class)->find(2);
-        \Kint::dump($user);
+        // \Kint::dump($user);
     }
 
     public function hola(string $nombre, View $view) {
-        echo $view->render('hola.twig', compact('nombre'));
+        echo $view->renderTemplate('hola.twig', compact('nombre'));
         // echo $view->render('hola.twig', ['nombre', $nombre]);
     }
 }
