@@ -6,7 +6,7 @@ class View {
     protected $twig;
 
     public function __construct() {
-        $loader = new \Twig_Loader_Filesystem(base_path(‘resources/views));S
+        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../../resources/views');
         $twig = new \Twig_Environment($loader);
 
         $twigFunctions = new \Twig_SimpleFunction(\TwigFunctions::class,
@@ -18,7 +18,7 @@ class View {
         $this->twig = $twig;
     }
 
-    public function render (string $view, array $data = []): string {
+    public function render(string $view, array $data = []): string {
         return $this->twig->render($view, $data);
     }
 }
